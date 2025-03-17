@@ -47,6 +47,7 @@ public class Linux extends Terminal {
                         return;
                 }
 
+
                 File file = new File(GerenciaDiretorio.getDirAtual(), caminho);
 
                 if(!file.exists()){
@@ -60,8 +61,6 @@ public class Linux extends Terminal {
                 } else if(file.isDirectory()){
                         GerenciaDiretorio.deletaDiretorio(file.getAbsolutePath());
                 }
-
-
         }
 
         @Override
@@ -95,6 +94,7 @@ public class Linux extends Terminal {
                         }
                 }
 
+                System.out.println();
         }
 
         @Override
@@ -145,12 +145,13 @@ public class Linux extends Terminal {
 
                 File diretorio = new File(GerenciaDiretorio.getDirAtual(), caminho);
 
-                GerenciaDiretorio.criaDiretório(diretorio.getAbsolutePath());
+                GerenciaDiretorio.criaDiretorio(diretorio.getAbsolutePath());
         }
 
         @Override
         public void pwd(){
                 System.out.println(GerenciaDiretorio.getDirAtual());
+                System.out.println();
         }
 }
 

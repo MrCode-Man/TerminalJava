@@ -8,7 +8,9 @@ import java.io.File;
 public class Windows extends Terminal{
 
         @Override
-        public void exibicao(){}
+        public void exibicao(){
+                System.out.print(GerenciaDiretorio.getDirAtual() + "> ");
+        }
 
         @Override
         public void cd(String caminho){}
