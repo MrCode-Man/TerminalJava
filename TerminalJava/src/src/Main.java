@@ -19,21 +19,13 @@ public class Main {
                 // entrada = sc.nextLine();
                 // partes = Prompt.trataEntrada(entrada);
 
-                tm.dir();
+
                 tm.cd("..");
+                tm.dir();
                 System.out.println();
 
+                tm.rm("vazio diretório");
                 tm.dir();
-                tm.cd("..");
-                System.out.println();
-
-                tm.dir();
-                tm.cd("..");
-                System.out.println();
-
-                tm.dir();
-                tm.cd("..");
-                System.out.println();
 
         }
 }

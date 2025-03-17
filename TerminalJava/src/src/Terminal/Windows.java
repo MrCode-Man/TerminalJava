@@ -8,6 +8,9 @@ public class Windows extends Terminal{
         public void cd(String caminho){}
 
         @Override
+        public void rm(String caminho){}
+
+        @Override
         public void dir(){}
 
         @Override

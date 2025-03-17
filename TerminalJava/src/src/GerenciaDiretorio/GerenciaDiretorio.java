@@ -1,6 +1,7 @@
 package GerenciaDiretorio;
 
 import java.io.File;
+import java.io.IOException;
 
 public class GerenciaDiretorio {
 
@@ -28,6 +29,20 @@ public class GerenciaDiretorio {
                 dirAtual = diretorioNovo.getAbsolutePath();
 
                 return true;
+        }
+
+        public static void deletaDiretorio(String caminho){
+
+                File diretorio = new File(caminho);
+
+                if(!diretorio.exists()){
+                        System.out.println("diretório não existe\n");
+                        return;
+                }
+
+                if(!diretorio.delete())
+                        System.out.println("não foi possível deletar o diretório\n");
+
         }
 
         public static String getDirAtual(){

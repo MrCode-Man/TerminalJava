@@ -1,5 +1,6 @@
 package Terminal;
 
+import GerenciaArquivo.GerenciaArquivo;
 import GerenciaDiretorio.GerenciaDiretorio;
 
 import java.io.File;
@@ -23,6 +24,31 @@ public class Linux extends Terminal {
                 }
 
                 GerenciaDiretorio.mudaDiretorio(caminho);
+        }
+
+        @Override
+        public void rm(String caminho){
+
+                if(caminho == null || caminho.isEmpty()){
+                        System.out.println("nenhum arquivo ou diretório passado\n");
+                        return;
+                }
+
+                File file = new File(GerenciaDiretorio.getDirAtual(), caminho);
+
+                if(!file.exists()){
+                        System.out.println("diretório ou arquivo não existe\n");
+                        return;
+                }
+
+                if(file.isFile()){
+                        GerenciaArquivo.deletaArquivo(file.getAbsolutePath());
+
+                } else if(file.isDirectory()){
+                        GerenciaDiretorio.deletaDiretorio(file.getAbsolutePath());
+                }
+
+
         }
 
         @Override

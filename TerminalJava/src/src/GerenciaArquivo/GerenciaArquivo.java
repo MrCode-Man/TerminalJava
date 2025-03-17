@@ -30,19 +30,15 @@ public class GerenciaArquivo {
 
         public static void deletaArquivo(String arq){
 
-                File arquivo = new File(GerenciaDiretorio.getDirAtual(), arq);
+                File arquivo = new File(arq);
 
                 if(!arquivo.exists()){
                         System.out.println("arquivo não existe\n");
                         return;
                 }
 
-                if(arquivo.delete()){
-                        System.out.println("arquivo apagado em: " + GerenciaDiretorio.getDirAtual());
-
-                } else {
+                if(!arquivo.delete())
                         System.out.println("não foi possível deletar arquivo\n");
-                }
 
         }
 
