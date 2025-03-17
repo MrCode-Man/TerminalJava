@@ -16,7 +16,7 @@ public class Main {
 
                 // implementação
                 System.out.println("digite 'win like' para usar o terminal do windows");
-                System.out.println("digite 'linux like' para usar o terminal do linux");
+                System.out.println("digite 'linux like' para usar o terminal do linux\n");
 
                 while (true) {
                         tm.exibicao();
