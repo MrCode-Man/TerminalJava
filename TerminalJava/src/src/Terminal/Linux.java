@@ -57,14 +57,51 @@ public class Linux extends Terminal {
                 File arquivo = new File(GerenciaDiretorio.getDirAtual());
                 File[] arquivos = arquivo.listFiles();
 
-                for(File arq : arquivos){
-                        System.out.println("arquivo: " + arq.getName());
+
+                int maxLength = 0;
+
+                for (File file : arquivos) {
+                        if (file.getName().length() > maxLength) {
+                                maxLength = file.getName().length();
+                        }
+                }
+
+
+                String format = "%-" + (maxLength + 2) + "s";
+
+                for (int i = 0; i < arquivos.length; i++) {
+
+                        if(arquivos[i].isFile())
+                                System.out.printf("\033[34m" + format + "\033[0m", arquivos[i].getName());
+                        else
+                                System.out.printf("\033[35m" + format + "\033[0m", arquivos[i].getName());
+
+
+                        if ((i + 1) % 3 == 0 || i == arquivos.length - 1) {
+                                System.out.println();
+                        }
                 }
 
         }
 
         @Override
-        public void echo(){}
+        public void echo(String texto, String arquivo){
+
+                if(texto == null || texto.isEmpty()){
+                        System.out.println("informe o texto\n");
+                        return;
+                }
+
+                if(arquivo == null || arquivo.isEmpty()){
+                        System.out.println(texto + '\n');
+                        return;
+                }
+
+
+                File arq = new File(GerenciaDiretorio.getDirAtual(), arquivo);
+                GerenciaArquivo.escreveArquivo(texto, arq.getAbsolutePath());
+
+        }
 
         @Override
         public void exit(){}

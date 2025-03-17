@@ -14,7 +14,7 @@ public class Windows extends Terminal{
         public void dir(){}
 
         @Override
-        public void echo(){}
+        public void echo(String texto, String arquivo){}
 
         @Override
         public void exit(){}

@@ -4,6 +4,8 @@ import GerenciaDiretorio.GerenciaDiretorio;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class GerenciaArquivo {
 
@@ -42,5 +44,23 @@ public class GerenciaArquivo {
 
         }
 
+        public static void escreveArquivo(String texto, String caminho){
+
+                File arquivo = new File(caminho);
+
+                if(!arquivo.exists()){
+                        System.out.println("arquivo passado não existe\n");
+                        return;
+                }
+
+                try(BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))){
+                        bw.write(texto);
+                        bw.newLine();
+
+                } catch(IOException e){
+                        System.out.println(e.getMessage());
+                }
+
+        }
 
 }

@@ -16,16 +16,14 @@ public class Main {
 
                 // implementação
 
-                // entrada = sc.nextLine();
-                // partes = Prompt.trataEntrada(entrada);
-
-
-                tm.cd("..");
                 tm.dir();
                 System.out.println();
 
-                tm.rm("vazio diretório");
+                tm.rm("mamae.txt");
+
                 tm.dir();
+
+
 
         }
 }
