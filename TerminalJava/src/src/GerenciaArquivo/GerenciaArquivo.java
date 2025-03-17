@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class GerenciaArquivo {
 
@@ -61,6 +63,26 @@ public class GerenciaArquivo {
                         System.out.println(e.getMessage());
                 }
 
+        }
+
+        public static void leArquivo(String caminho){
+
+                File arquivo = new File(caminho);
+
+                if(!arquivo.exists()){
+                        System.out.println("arquivo passado não existe\n");
+                        return;
+                }
+
+                try(BufferedReader br = new BufferedReader(new FileReader(arquivo))){
+                        String linha;
+
+                        while ((linha = br.readLine()) != null)
+                                System.out.println(linha);
+
+                } catch(IOException e){
+                        System.out.println(e.getMessage() + '\n');
+                }
         }
 
 }

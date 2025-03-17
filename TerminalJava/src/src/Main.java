@@ -15,15 +15,51 @@ public class Main {
                 String entrada;
 
                 // implementação
+                while (true) {
+                        tm.exibicao();
 
-                tm.dir();
-                System.out.println();
+                        entrada = sc.nextLine().trim();
+                        partes  = Prompt.trataEntrada(entrada);
 
-                tm.rm("mamae.txt");
+                        if (partes[0] == null || partes.length == 0){
+                                continue;
+                        }
 
-                tm.dir();
+                        String comando   = partes[0];
 
-
+                        switch (comando) {
+                                case "cd":
+                                        tm.cd(partes[1]);
+                                        break;
+                                case "rm":
+                                        break;
+                                case "dir":
+                                        tm.dir();
+                                        break;
+                                case "echo":
+                                        tm.echo(partes[1], partes[2]);
+                                        break;
+                                case "cat":
+                                        tm.cat(partes[1]);
+                                        break;
+                                case "touch":
+                                        tm.touch(partes[1]);
+                                        break;
+                                case "mkdir":
+                                        tm.mkdir(partes[1]);
+                                        break;
+                                case "pwd":
+                                        tm.pwd();
+                                        break;
+                                case "exit":
+                                        System.out.println("Saindo...");
+                                        sc.close();
+                                        return;
+                                default:
+                                        System.out.println("Comando desconhecido: " + comando);
+                                        break;
+                        }
+                }
 
         }
 }

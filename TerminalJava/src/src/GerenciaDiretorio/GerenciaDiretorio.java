@@ -45,6 +45,20 @@ public class GerenciaDiretorio {
 
         }
 
+        public static void criaDiretório(String caminho){
+
+                File diretorio = new File(caminho);
+
+                if(diretorio.exists()){
+                        System.out.println("diretório já existe\n");
+                        return;
+                }
+
+                if(!diretorio.mkdir())
+                        System.out.println("erro ao criar o(s) diretório(s)\n");
+
+        }
+
         public static String getDirAtual(){
                 return dirAtual;
         }

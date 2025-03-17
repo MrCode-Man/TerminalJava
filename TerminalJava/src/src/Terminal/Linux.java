@@ -8,6 +8,19 @@ import java.io.File;
 public class Linux extends Terminal {
 
         @Override
+        public void exibicao(){
+
+                String usuario    = System.getProperty("user.name");
+                String computador = System.getenv("COMPUTERNAME"); // Windows
+
+                if (computador == null) {
+                        computador = System.getenv("HOSTNAME"); // Linux/macOS
+                }
+
+                System.out.printf("%s@%s~$ ", usuario, computador);
+        }
+
+        @Override
         public void cd(String caminho){
 
                 if(caminho == null || caminho.isEmpty()){
@@ -104,7 +117,40 @@ public class Linux extends Terminal {
         }
 
         @Override
-        public void exit(){}
+        public void cat(String caminho){
 
+                if(caminho == null || caminho.isEmpty()){
+                        System.out.println("informe o arquivo para ler\n");
+                        return;
+                }
+
+                File arquivo = new File(GerenciaDiretorio.getDirAtual(), caminho);
+
+                GerenciaArquivo.leArquivo(arquivo.getAbsolutePath());
+        }
+
+        @Override
+        public void touch(String caminho){
+                GerenciaArquivo.criaArquivo(caminho);
+        }
+
+        @Override
+        public void mkdir(String caminho){
+
+                if(caminho == null || caminho.isEmpty()){
+                        System.out.println("Informe o nome do diretório a ser criado\n");
+                        return;
+                }
+
+
+                File diretorio = new File(GerenciaDiretorio.getDirAtual(), caminho);
+
+                GerenciaDiretorio.criaDiretório(diretorio.getAbsolutePath());
+        }
+
+        @Override
+        public void pwd(){
+                System.out.println(GerenciaDiretorio.getDirAtual());
+        }
 }
 
