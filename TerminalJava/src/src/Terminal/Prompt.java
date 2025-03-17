@@ -33,6 +33,7 @@ public class Prompt {
                         parte2 = null;
                 }
 
+
                 // tratando parte3
                 String parte3 = novaParte.substring(redirecionamento + 1).trim();
 
