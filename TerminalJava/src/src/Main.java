@@ -15,6 +15,9 @@ public class Main {
                 String entrada;
 
                 // implementação
+
+                System.out.println(System.getProperty("user.home"));
+
                 System.out.println("digite 'win like' para usar o terminal do windows");
                 System.out.println("digite 'linux like' para usar o terminal do linux\n");
 

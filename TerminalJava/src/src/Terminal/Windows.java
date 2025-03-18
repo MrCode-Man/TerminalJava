@@ -95,17 +95,36 @@ public class Windows extends Terminal{
         }
 
         @Override
-        public void cat(String caminho){}
+        public void cat(String caminho){
 
-        @Override
-        public void touch(String caminho){}
+                if(caminho == null || caminho.isEmpty()){
+                        System.out.println("informe o arquivo para ler\n");
+                        return;
+                }
 
-        @Override
-        public void mkdir(String caminho){}
+                File arquivo = new File(GerenciaDiretorio.getDirAtual(), caminho);
 
-        @Override
-        public void pwd(){
-                System.out.println(GerenciaDiretorio.getDirAtual() + '\n');
+                GerenciaArquivo.leArquivo(arquivo.getAbsolutePath());
         }
+
+        @Override
+        public void touch(String caminho){ GerenciaArquivo.criaArquivo(caminho); }
+
+        @Override
+        public void mkdir(String caminho){
+
+                if(caminho == null || caminho.isEmpty()){
+                        System.out.println("Informe o nome do diretório a ser criado\n");
+                        return;
+                }
+
+
+                File diretorio = new File(GerenciaDiretorio.getDirAtual(), caminho);
+
+                GerenciaDiretorio.criaDiretorio(diretorio.getAbsolutePath());
+        }
+
+        @Override
+        public void pwd(){ System.out.println(GerenciaDiretorio.getDirAtual() + '\n'); }
 
 }

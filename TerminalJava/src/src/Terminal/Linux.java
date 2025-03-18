@@ -10,14 +10,25 @@ public class Linux extends Terminal {
         @Override
         public void exibicao(){
 
-                String usuario    = System.getProperty("user.name");
-                String computador = System.getenv("COMPUTERNAME"); // Windows
+                String usuario = System.getProperty("user.name");
+                String computador = System.getenv("COMPUTERNAME");
 
                 if (computador == null) {
-                        computador = System.getenv("HOSTNAME"); // Linux/macOS
+                        computador = System.getenv("HOSTNAME");
                 }
 
-                System.out.printf("%s@%s~$ ", usuario, computador);
+                File dirAtual = new File(GerenciaDiretorio.getDirAtual());
+
+                String raiz = System.getProperty("user.home");
+                String raizSistema = (File.separator.equals("\\") ? "C:\\" : "/");
+
+                if (dirAtual.getAbsolutePath().equals(raizSistema)) {
+                        System.out.printf("%s@%s:~$ ", usuario, computador);
+
+                } else {
+                        System.out.printf("%s@%s:\033[34m/%s\033[0m$ ", usuario, computador, dirAtual.getName());
+                }
+
         }
 
         @Override
@@ -32,11 +43,18 @@ public class Linux extends Terminal {
                 if(caminho.equals("..")){
                         File pai = new File(dirAtual);
 
+                        if(pai.getParent() == null){
+                                return;
+                        }
+
                         GerenciaDiretorio.mudaDiretorio(pai.getParent());
                         return;
+
                 }
 
-                GerenciaDiretorio.mudaDiretorio(caminho);
+                if(!GerenciaDiretorio.mudaDiretorio(caminho)){
+                        return;
+                }
         }
 
         @Override

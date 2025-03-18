@@ -25,6 +25,10 @@ public class GerenciaDiretorio {
                         return false;
                 }
 
+                if(diretorioNovo.getAbsolutePath().equals(File.separator)) {
+                        return false;
+                }
+
                 dirAtual = diretorioNovo.getAbsolutePath();
 
                 return true;
