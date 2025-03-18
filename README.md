@@ -9,7 +9,7 @@ Ele oferece funcionalidades para manipulação de arquivos e diretórios
 - **cd <caminho>**: Altera o diretório atual.
 - **rm <arquivo/diretorio>**: Deleta um arquivo ou diretório (sendo ele cheio ou não).
 - **dir**: Lista o conteúdo do diretório atual.
-- **echo <texto> > <arquivo>**: Redireciona o texto para um arquivo. Se não for passado o símbolo ">", o texto é mostrado na tela.
+- **echo texto > arquivo**: Redireciona o texto para um arquivo. Se não for passado o símbolo ">", o texto é mostrado na tela.
 - **cat <arquivo>**: Exibe o conteúdo de um arquivo.
 - **touch <arquivo>**: Cria um novo arquivo vazio com o nome especificado.
 - **mkdir <diretorio>**: Cria um novo diretório vazio.
